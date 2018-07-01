@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Main3Activity">
+
+    <EditText
+        android:id="@+id/Name1"
+        android:layout_width="379dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/BusinessNumber1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/BusinessNumber1"
+        android:layout_width="379dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="BusinessNumber"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/PrimaryBusiness1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Name1" />
+
+    <EditText
+        android:id="@+id/PrimaryBusiness1"
+        android:layout_width="379dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="PrimaryBusiness"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/Address1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/BusinessNumber1" />
+
+    <EditText
+        android:id="@+id/Address1"
+        android:layout_width="379dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="Address"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/Province1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/PrimaryBusiness1" />
+
+    <EditText
+        android:id="@+id/Province1"
+        android:layout_width="379dp"
+        android:layout_height="52dp"
+        android:layout_marginBottom="9dp"
+        android:layout_marginEnd="2dp"
+        android:layout_marginStart="3dp"
+        android:layout_marginTop="5dp"
+        android:ems="10"
+        android:hint="Province"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toTopOf="@+id/update"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Address1" />
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="17dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="9dp"
+        android:text="Update"
+        app:layout_constraintBottom_toTopOf="@+id/delete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Province1" />
+
+    <Button
+        android:id="@+id/delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="84dp"
+        android:layout_marginEnd="148dp"
+        android:layout_marginStart="148dp"
+        android:layout_marginTop="17dp"
+        android:text="Delete"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/update" />
+
+</android.support.constraint.ConstraintLayout>

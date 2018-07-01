@@ -5,66 +5,57 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.firebase.ui.database.FirebaseListAdapter;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 public class MainActivity extends Activity {
-
-
-    private ListView contactListView;
-    private FirebaseListAdapter<Contact> firebaseAdapter;
+    private Button submitButton;
+    private ListView listView;
+    private DatabaseReference ref;
+    Contact contact = new Contact();
+    private FirebaseListAdapter<Contact> adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-        //Get the app wide shared variables
-        MyApplicationData appData = (MyApplicationData)getApplication();
-
-        //Set-up Firebase
-        appData.firebaseDBInstance = FirebaseDatabase.getInstance();
-        appData.firebaseReference = appData.firebaseDBInstance.getReference("contacts");
-
-        //Get the reference to the UI contents
-        contactListView = (ListView) findViewById(R.id.listView);
-
-        //Set up the List View
-       firebaseAdapter = new FirebaseListAdapter<Contact>(this, Contact.class,
-                android.R.layout.simple_list_item_1, appData.firebaseReference) {
+        setContentView(R.layout.activity_read);
+        submitButton = (Button) findViewById(R.id.submitButton);
+        listView = (ListView) findViewById(R.id.listView);
+        ref = FirebaseDatabase.getInstance().getReference("Contact");
+        adapter = new FirebaseListAdapter<Contact>(this, Contact.class, android.R.layout.simple_list_item_1, ref) {
             @Override
-            protected void populateView(View v, Contact model, int position) {
-                TextView contactName = (TextView)v.findViewById(android.R.id.text1);
-                contactName.setText(model.name);
+            protected void populateView(View view, Contact model, int position) {
+                TextView name = (TextView) view.findViewById(android.R.id.text1);
+                name.setText(model.name);
             }
         };
-        contactListView.setAdapter(firebaseAdapter);
-        contactListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            // onItemClick method is called everytime a user clicks an item on the list
+        listView.setAdapter(adapter);
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                Contact person = (Contact) firebaseAdapter.getItem(position);
-                showDetailView(person);
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Contact name = (Contact) adapter.getItem(i);
+                showDetailView(name);
+            }
+        });
+        submitButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent();
+                i.setClass(MainActivity.this, Main2Activity.class);
+                MainActivity.this.startActivity(i);
+
             }
         });
     }
-
-    public void createContactButton(View v)
+    private void showDetailView(Contact name)
     {
-        Intent intent=new Intent(this, CreateContactAcitivity.class);
+        Intent intent = new Intent(this, Main3Activity.class);
+        intent.putExtra("contract", name);
         startActivity(intent);
     }
-
-    private void showDetailView(Contact person)
-    {
-        Intent intent = new Intent(this, DetailViewActivity.class);
-        intent.putExtra("Contact", person);
-        startActivity(intent);
-    }
-
-
-
 }
